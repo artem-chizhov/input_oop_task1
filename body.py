@@ -91,30 +91,28 @@ class Student:
         self.courses_in_progress = []
         self.grades = {}
         list_student.append(self)
-        return
+       
 
     def add_courses(self, course_name):
         self.courses_in_progress.append(course_name)
-        return 
+        
     
     def fin_curses(self, course_name):
         self.courses_in_progress.remove(course_name)
         self.finished_courses.append(course_name)
-        return 
+        
 
     def score_lec(self, lecturer, course, grade):
         if type(grade) != int or grade > 10 or grade < 0:
-            return print("Внимание доступны только целые числа в диапазоне от 1 до 10!")
+            print("Внимание доступны только целые числа в диапазоне от 1 до 10!")
         else:
             if isinstance(lecturer, Lecturer) and course in self.courses_in_progress and course in lecturer.courses_attached:
                 if course in lecturer.grades_lec:
                     lecturer.grades_lec[course] += [grade]
-                    return
                 else:
                     lecturer.grades_lec[course] = [grade]
-                    return
             else:
-                return print('Ошибка')
+                print('Ошибка')
 
     def calc(self, cour):
         def cal_ (cr):
@@ -133,61 +131,59 @@ class Student:
         if cour == "all":
             for crs in self.courses_in_progress:
                 if self.grades.get(crs) == None:
-                    return print("Оценки отсутствуют")
+                    print("Оценки отсутствуют")
                 else:
                     sum += cal_(crs)
-                    return sum
         else:
             if self.grades.get(crs) == None:
-                print("Оценки отсутствуют")
-                return 
+                print("Оценки отсутствуют") 
             else:    
                 sum += cal_(cour)
-                return sum
+        return sum
 
     #   ==
     def __eq__(self, other):
             if not isinstance(other, type(self)):
-                return print("Не соответствие ТИПОВ")
+                print("Не соответствие ТИПОВ")
             else:
                 if self.calc("all") != other.calc("all"):
                     m_ax = [self.calc("all"), other.calc("all")]
                     m_in = [self.calc("all"), other.calc("all")]
                     print(f"Оценки отличаются! Разница = {max(m_ax)-min(m_in)}")
                     if self.calc("all") > other.calc("all"):
-                        return print(f"{self.name} > {other.name}")
+                        print(f"{self.name} > {other.name}")
                     else:
-                        return print(f"{self.name} < {other.name}") 
+                        print(f"{self.name} < {other.name}") 
                 else:
-                    return print(f"{self.name} = {other.name}")        
+                    print(f"{self.name} = {other.name}")        
     #   != 
     def __ne__(self, other):
         if not isinstance(other, type(self)):
-            return print("Не соответствие ТИПОВ")
+            print("Не соответствие ТИПОВ")
         else:
             self.__eq__(other)
     #    <
     def __lt__(self, other):
         if not isinstance(other, type(self)):
-            return print("Не соответствие ТИПОВ")
+            print("Не соответствие ТИПОВ")
         else:
             self.__eq__(other)      
     #   <=
     def __le__(self, other):
         if not isinstance(other, type(self)):
-            return print("Не соответствие ТИПОВ")
+            print("Не соответствие ТИПОВ")
         else:
             self.__eq__(other)          
     #      >
     def __gt__(self, other):
         if not isinstance(other, type(self)):
-            return print("Не соответствие ТИПОВ")
+            print("Не соответствие ТИПОВ")
         else:
             self.__eq__(other)        
     #       >=
     def __ge__(self, other):
         if not isinstance(other, type(self)):
-            return print("Не соответствие ТИПОВ")
+            print("Не соответствие ТИПОВ")
         else:
             self.__eq__(other)
             
@@ -210,50 +206,49 @@ class Mentor:
         #   ==
     def __eq__(self, other):
             if not isinstance(other, type(self)):
-                return print("Не соответствие ТИПОВ")
+                print("Не соответствие ТИПОВ")
             else:
                 if self.calc("all") != other.calc("all"):
                     m_ax = [self.calc("all"), other.calc("all")]
                     m_in = [self.calc("all"), other.calc("all")]
                     print(f"Оценки отличаются! Разница = {max(m_ax)-min(m_in)}")
                     if self.calc("all") > other.calc("all"):
-                        return print(f"{self.name} > {other.name}")
+                        print(f"{self.name} > {other.name}")
                     else:
-                        return print(f"{self.name} < {other.name}") 
+                        print(f"{self.name} < {other.name}") 
                 else:
-                    return print(f"{self.name} = {other.name}")        
+                    print(f"{self.name} = {other.name}")        
     #   != 
     def __ne__(self, other):
         if not isinstance(other, type(self)):
-            return print("Не соответствие ТИПОВ")
+            print("Не соответствие ТИПОВ")
         else:
             self.__eq__(other)
     #    <
     def __lt__(self, other):
         if not isinstance(other, type(self)):
-            return print("Не соответствие ТИПОВ")
+            print("Не соответствие ТИПОВ")
         else:
             self.__eq__(other)      
     #   <=
     def __le__(self, other):
         if not isinstance(other, type(self)):
-            return print("Не соответствие ТИПОВ")
+            print("Не соответствие ТИПОВ")
         else:
             self.__eq__(other)          
     #      >
     def __gt__(self, other):
         if not isinstance(other, type(self)):
-            return print("Не соответствие ТИПОВ")
+            print("Не соответствие ТИПОВ")
         else:
             self.__eq__(other)        
     #       >=
     def __ge__(self, other):
         if not isinstance(other, type(self)):
-            return print("Не соответствие ТИПОВ")
+            print("Не соответствие ТИПОВ")
         else:
             self.__eq__(other)
-            
-        return
+
 #Ревьюеры 
 class Reviewer(Mentor):
 
@@ -263,17 +258,15 @@ class Reviewer(Mentor):
 
     def rate_hw(self, student, course, grade):
         if type(grade) != int or grade > 10 or grade < 0:
-            return print("Внимание доступны только целые числа в диапазоне от 1 до 10!")
+            print("Внимание доступны только целые числа в диапазоне от 1 до 10!")
         else:
             if isinstance(student, Student) and course in self.courses_attached and course in student.courses_in_progress:
                 if course in student.grades:
                     student.grades[course] += [grade]
-                    return
                 else:
                     student.grades[course] = [grade]
-                    return
             else:
-                return 'Ошибка'
+                print("Ошибка")
 
 
     def __str__(self):
@@ -289,18 +282,18 @@ class Lecturer(Mentor):
         super().__init__(name, surname)
         self.grades_lec = {}
         list_lecturer.append(self)
-        return
+        
         
     def add_courses(self, course_name):
         if course_name in self.courses_attached:
-            return print("Данный лектор уже ведет данный курс!")
+            print("Данный лектор уже ведет данный курс!")
         else:
             self.courses_attached.append(course_name)
         if course_name not in self.grades_lec:
             self.grades_lec[course_name] = []
         if course_name not in available_courses:
             available_courses.append(course_name)
-        return
+        
 
     def calc(self, cour):
         def cal_ (cr):
@@ -319,17 +312,15 @@ class Lecturer(Mentor):
         if cour == "all":
             for crs in self.courses_attached:
                 if self.grades_lec.get(crs) == None:
-                    return print("Оценки отсутствуют")
+                    print("Оценки отсутствуют")
                 else:
                     sum += cal_(crs)
-                    return sum
         else:
             if self.grades_leces.get(crs) == None:
                 print("Оценки отсутствуют")
-                return 
             else:    
                 sum += cal_(cour)
-                return sum  
+        return sum  
 
 
     def __str__(self):
@@ -422,18 +413,18 @@ print("Выводим Ревюера")
 print(cool_reviewer)
 print("======"*16)
 print("Попытка сравнения лектора и ревьюера")
-print(best_student == cool_reviewer)
+best_student == cool_reviewer
 print("======"*16)
 print("Сравниваем лекторов")
-print(midle_lecturer == standart_lecturer)
+midle_lecturer == standart_lecturer
 print("======"*16)
 print("Сравниваем студентов")
-print(best_student == low_student1)
-print(best_student <= low_student3)
-print(best_student >= low_student4)
-print(best_student != low_student5)
-print(best_student > low_student6)
-print(best_student < low_student2)
+best_student == low_student1
+best_student <= low_student3
+best_student >= low_student4
+best_student != low_student5
+best_student > low_student6
+best_student < low_student2
 print("======"*16)
 score_st()
 print("======"*16)
